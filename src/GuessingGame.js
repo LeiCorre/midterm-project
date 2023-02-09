@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
-import { getLuckyNum } from "./LuckyNum";
 import Button from 'react-bootstrap/Button';
 import { Form } from "react-bootstrap";
 import './err.css'
 
 export function GuessingGame () {
+
+    function getLuckyNum () {
+        let num = Math.floor(Math.random() * 100);
+        if (num === 0 ) {num++};
+        return num;
+    }
     
     const guessRecall = parseInt(localStorage.getItem('numberOfGuesses'));
     const luckyRecall = parseInt(localStorage.getItem('luckyNumber'));
@@ -98,7 +103,7 @@ export function GuessingGame () {
             <Button onClick={(e)=> reset(e)}>Reset</Button>
             <br />
             <br/>
-            {guessMessage}
+            <p>{guessMessage}</p>
         </div>
     )
 }
