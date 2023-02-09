@@ -5,7 +5,6 @@ function App() {
   return (
     <div style={{ textAlign: 'center', margin: '10px' }}>
     <GuessingGame />
-    <a href='https://leicorre.github.io/randomizer/'>View Live App</a>
     </div>
   );
 }
