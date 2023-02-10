@@ -1,7 +1,20 @@
 import { useState, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
-import { Form } from "react-bootstrap";
-import './err.css'
+import { Form, Alert } from "react-bootstrap";
+import './err.css';
+
+function Notice () {
+    const [show, setShow] = useState(true);
+  
+    if (show) {
+      return (
+        <Alert variant="dark" onClose={() => setShow(false)} dismissible>
+          Try entering a letter, or a number over 100 to see what happens.
+        </Alert>
+      );
+    }
+    
+  }
 
 export function GuessingGame () {
 
@@ -88,22 +101,26 @@ export function GuessingGame () {
         setUserGuess(parseInt(e.target.value))
     }
 
+
     return (
         <div>
             <p>I am thinking of a number between 1 and 100. Guess the Lucky Number!</p>
             <p>You have made {numOfGuesses} guesses</p>
+
             <Form id='form' style={{margin: '0 2rem'}}>
                 <Form.Label htmlFor='guess'>Enter a Number between 1 and 100</Form.Label>
+                <Notice />
                 <Form.Control style={{padding: '10px'}} required id='guess' type='text' name='guess' onChange={(e)=> valUpdate(e) }/>
                 <p id='err-message' style={{color: 'red'}}>{errorMessage}</p>
                 <br/>
-                <Button id='submitButton' onClick={(e)=> guessNumber(e)}>Guess</Button>
+                <Button variant='success' id='submitButton' onClick={(e)=> guessNumber(e)}>Guess</Button>
             </Form>
             <br/>
-            <Button onClick={(e)=> reset(e)}>Reset</Button>
+            <Button variant='secondary' onClick={(e)=> reset(e)}>Reset</Button>
             <br />
             <br/>
             <p>{guessMessage}</p>
+            
         </div>
     )
 }
