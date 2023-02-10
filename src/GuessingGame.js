@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import { Form, Alert } from "react-bootstrap";
-import './GuessingGame.module.css';
+import styles from './GuessingGame.module.css';
+import './err.css'
 
 function Notice () {
     const [show, setShow] = useState(true);
@@ -103,20 +104,19 @@ export function GuessingGame () {
 
 
     return (
-        <div>
+        <div className={styles.pos}>
             <p>I am thinking of a number between 1 and 100. Guess the Lucky Number!</p>
             <p>You have made {numOfGuesses} guesses</p>
 
-            <Form id='form' style={{margin: '0 2rem'}}>
+            <Form id='form' className={styles.form}>
                 <Form.Label htmlFor='guess'>Enter a Number between 1 and 100</Form.Label>
                 <Notice />
-                <Form.Control style={{padding: '10px'}} required id='guess' type='text' name='guess' onChange={(e)=> valUpdate(e) }/>
-                <p id='err-message' style={{color: 'red'}}>{errorMessage}</p>
+                <Form.Control style={{padding: '10px'}} autocomplete='off' required id='guess' type='text' name='guess' onChange={(e)=> valUpdate(e) }/>
+                <p className={styles.errMessage} style={{color: 'red'}}>{errorMessage}</p>
                 <br/>
-                <Button variant='success' id='submitButton' onClick={(e)=> guessNumber(e)}>Guess</Button>
+                <Button className={styles.pos3} variant='success' id='submitButton' onClick={(e)=> guessNumber(e)}>Guess</Button>
             </Form>
-            <br/>
-            <Button variant='secondary' onClick={(e)=> reset(e)}>Reset</Button>
+            <Button className={styles.pos2} variant='secondary' onClick={(e)=> reset(e)}>Reset</Button>
             <br />
             <br/>
             <p>{guessMessage}</p>
