@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import { Form, Alert } from "react-bootstrap";
-import './err.css';
+import './GuessingGame.module.css';
 
 function Notice () {
     const [show, setShow] = useState(true);
